@@ -1,2 +1,2 @@
 # chainsaw-logger
-Python logger package
+Python logging and other tools
