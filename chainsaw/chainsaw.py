@@ -3,33 +3,26 @@ import logging
 from rich.logging import RichHandler
 
 class Logger:
-    level = "NOTSET"
+    def __init__(self, logger):
+        self.logger = logger
+            
+def _logger(
+    level="NOTSET",
+    logger_blocklist=[
+        "fiona",
+        "rasterio",
+        "matplotlib",
+        "PIL"],
+    rich_tracebacks=True):
+
     logging.basicConfig(
             level=level, 
             format="%(message)s", 
             datefmt="[%X]", 
-            handlers=[RichHandler()]
+            handlers=[RichHandler(rich_tracebacks=rich_tracebacks)]
             )
-            
-    logger_blocklist = [
-    "fiona",
-    "rasterio",
-    "matplotlib",
-    "PIL"]
+
     for module in logger_blocklist:
         logging.getLogger(module).setLevel(logging.WARNING)
-
-    logger = logging.getLogger("rich")
-
-    def __init__(self, level, logger):
-        self.level = level
-        self.logger = logger
-
-
-def benchmark(fn):
-    def _timing(*a, **kw):
-        st = time.perf_counter()
-        r = fn(*a, **kw)
-        Logger.logger.info(f"{fn.__name__} execution: {time.perf_counter() - st} seconds")
-        return r
-    return _timing
+            
+    return logging.getLogger("rich")

@@ -1,15 +1,14 @@
 def main():
-    from chainsaw import Logger
-    from chainsaw import benchmark
+    from chainsaw import chainsaw_logger
+    from chainsaw import powertimer
     from time import sleep
 
-    @benchmark
+    @powertimer
     def test():
-        print(Logger.logger)
-        Logger.logger.info("This is info")
-        Logger.logger.debug("This is debugging")
-        Logger.logger.warning("This is a warning")
-        Logger.logger.error("This is an error")
+        chainsaw_logger.info("This is info")
+        chainsaw_logger.debug("This is debugging")
+        chainsaw_logger.warning("This is a warning")
+        chainsaw_logger.error("This is an error")
         sleep(1)
     
     test()
