@@ -10,7 +10,17 @@ class Logger:
             datefmt="[%X]", 
             handlers=[RichHandler()]
             )
+            
+    logger_blocklist = [
+    "fiona",
+    "rasterio",
+    "matplotlib",
+    "PIL"]
+    for module in logger_blocklist:
+        logging.getLogger(module).setLevel(logging.WARNING)
+
     logger = logging.getLogger("rich")
+
     def __init__(self, level, logger):
         self.level = level
         self.logger = logger
