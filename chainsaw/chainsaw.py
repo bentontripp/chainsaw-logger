@@ -12,7 +12,11 @@ def _logger(
         "fiona",
         "rasterio",
         "matplotlib",
-        "PIL"],
+        "PIL",
+        "wordcloud",
+        "fontTools",
+        "base64",
+        "io"],
     rich_tracebacks=True):
 
     logging.basicConfig(
