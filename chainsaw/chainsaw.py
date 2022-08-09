@@ -16,7 +16,10 @@ def _logger(
         "wordcloud",
         "fontTools",
         "base64",
-        "io"],
+        "io",
+        "scipy",
+        "shapely",
+        "itertools"],
     rich_tracebacks=True):
 
     logging.basicConfig(

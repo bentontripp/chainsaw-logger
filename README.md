@@ -1,2 +1,5 @@
 # chainsaw-logger
-Python logging and other tools
+Some generic Python utilities including:
+- Logging
+- Timing
+- Flattening Lists
